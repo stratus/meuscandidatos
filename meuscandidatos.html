@@ -20,12 +20,36 @@
     <a href="javascript:window.print()">Imprimir</a>
     <br/><br/>
     {% for candidato in meuscandidatos %}
-    <b>{{candidato.deputado_estadual}}</b> para deputado estadual.<br/>
-    <b>{{candidato.deputado_federal}}</b> para deputado federal.<br/>
-    <b>{{candidato.senador_primeiro}}</b> para senador.<br/>
-    <b>{{candidato.senador_segundo}}</b> para senador.<br/>
-    <b>{{candidato.governador}}</b> para governador.<br/>
-    <b>{{candidato.presidente}}</b> para presidente.<br/>
+      {% if candidato.deputado_estadual %}
+        <b>{{candidato.deputado_estadual}}</b> para deputado estadual.<br/>
+      {% else %}
+        <b>Branco/Nulo</b> para deputado estadual.<br/>
+      {% endif %}
+      {% if candidato.deputado_federal %}
+        <b>{{candidato.deputado_federal}}</b> para deputado federal.<br/>
+      {% else %}
+        <b>Branco/Nulo</b> para deputado federal.<br/>
+      {% endif %}
+      {% if candidato.senador_primeiro %}
+        <b>{{candidato.senador_primeiro}}</b> para senador.<br/>
+      {% else %}
+        <b>Branco/Nulo</b> para senador.<br/>
+      {% endif %}
+      {% if candidato.senador_segundo %}
+        <b>{{candidato.senador_segundo}}</b> para senador.<br/>
+      {% else %}
+        <b>Branco/Nulo</b> para senador.<br/>
+      {% endif %}
+      {% if candidato.governador %}
+        <b>{{candidato.governador}}</b> para governador.<br/>
+      {% else %}
+        <b>Branco/Nulo</b> para governador.<br/>
+      {% endif %}
+      {% if candidato.presidente %}
+        <b>{{candidato.presidente}}</b> para presidente.<br/>
+      {% else %}
+        <b>Branco/Nulo</b> para presidente.<br/>
+      {% endif %}
     {% endfor %}
     <br/>
     Recebeu esse link e quer participar também? <a href="http://meuscandidatos.appspot.com">Clique aqui</a>.<br/>

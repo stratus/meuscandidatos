@@ -1,20 +1,42 @@
 <html>
+  <head>
+    <title>Meus Candidatos! - http://meuscandidatos.appspot.com/</title>
+    <script src="http://platform.twitter.com/anywhere.js?id=fFi7gzg4pVApbpBBmuuVw&v=1" type="text/javascript"></script>
+    <script type="text/javascript">
+      twttr.anywhere(function (T) {
+        T.hovercards();
+      });
+    </script>
+  </head>
   <body>
     <h1>Meus Candidatos</h1>
-    <span class="features">Compartilhe seus candidatos em seu blog!</span><br/>
     <span class="features">Divulgue em quem vai votar no twitter!</span><br/>
-    <span class="features">Imprima seus votos para facilitar seu trabalho na urna!</span>
+    <span class="features">Em breve mais funcionalidades. :)</span><br/>
     <br/>
+    {% if intexception %}
+    <b>Favor verifique a sua cédula abaixo. Ela contém caracteres inválidos.</b>
     <br/>
+    {% endif %}
+    {% if putexception %}
+    <b>Houve um problema ao salvar sua cédula. Por favor tente mais tarde. </b>
+    <br/>
+    {% endif %}
     <form action="/" method="post">
-      <div>Deputado Estadual: <input type="text" name="deputado_estadual"></input></div>
-      <div>Deputado Federal: <input type="text" name="deputado_federal"></input></div>
-      <div>Senador (primeiro candidato): <input type="text" name="senador_primeiro"></input></div>
-      <div>Senador (segundo candidato): <input type="text" name="senador_segundo"></input></div>
-      <div>Governador: <input type="text" name="governador"></input></div>
-      <div>Presidente: <input type="text" name="presidente"></input></div>
-      <div><input type="submit" value="Enviar"></div>
+    <table>
+    {{ meuscandidatosform.as_table }}
+      <tr>
+        <td>
+          <input type="submit" name="submit" value="Enviar">
+        </td>
+      </tr>
+    </table>
     </form>
+    <br/>
+    Siga o seu candidato a presidência no twitter:<br/>
+    @dilmabr @eymael @ivanpinheiropcb @joseserra_ @levyfidelix @pliniodearruda @ruicpimenta29 @silva_marina @zemaria_pstu
+    <br/>
+    <hr>
+    Autor: @grfranco
   </body>
 </html>
 

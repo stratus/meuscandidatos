@@ -1,5 +1,33 @@
 <html>
+  <head>
+    <title>Meus Candidatos! - http://meuscandidatos.appspot.com/</title>
+    <script src="http://platform.twitter.com/anywhere.js?id=fFi7gzg4pVApbpBBmuuVw&v=1" type="text/javascript"></script>
+    <script type="text/javascript">
+      twttr.anywhere.config({ callbackURL: location.href });
+      twttr.anywhere(function (T) {
+         T ("#tbox").tweetBox({
+            label: "Meus Candidatos no Twitter:",
+	    defaultContent: "Eu voto e esses são os meus candidatos! - " + location.href + " #eleicoes2010",
+            onTweet: function (tweet, htmlTweet) {
+      	       document.getElementById("tbox").setAttribute("style", "display: none;");
+    	    }
+         });
+      });
+      function togglePrintPreview() {
+         var currCSS = document.getElementById('printCSS');
+         if (currCSS.media == 'all') {
+            currCSS.media = 'print';
+         }
+	 else {
+            currCSS.media = 'all';
+	 }
+    </script>
+  </head>
   <body>
+    <h1>Meus Candidatos</h1>
+    <a href="javascript:togglePrintPreview()">Ligar/Desligar modo impressão</a> | 
+    <a href="javascript:window.print()">Imprimir</a>
+    <br/><br/>
     {% for candidato in meuscandidatos %}
     <b>{{candidato.deputado_estadual}}</b> para deputado estadual.<br/>
     <b>{{candidato.deputado_federal}}</b> para deputado federal.<br/>
@@ -9,7 +37,10 @@
     <b>{{candidato.presidente}}</b> para presidente.<br/>
     {% endfor %}
     <br/>
-    Compartilhe no twitter!
+    Recebeu esse link e quer participar também? <a href="http://meuscandidatos.appspot.com">Clique aqui</a>.<br/>
+    Errou algo e quer preencher novamente? <a href="http://meuscandidatos.appspot.com">Clique aqui.</a>
+    <br/><br/>
+    <div id="tbox"></div>
   </body>
 </html>
 

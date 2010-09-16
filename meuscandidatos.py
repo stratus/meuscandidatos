@@ -23,41 +23,61 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext import db
 from google.appengine.ext.webapp import template
+from google.appengine.ext.db import djangoforms
+
 
 LOOKUP_BY_KEY = "SELECT * FROM MeusCandidatos WHERE __key__ = KEY ('MeusCandidatos', :1)"
 
 
 class MeusCandidatos(db.Model):
-  deputado_estadual = db.IntegerProperty()
-  deputado_federal = db.IntegerProperty()
-  senador_primeiro = db.IntegerProperty()
-  senador_segundo = db.IntegerProperty()
-  governador = db.IntegerProperty()
-  presidente = db.IntegerProperty()
-  date = db.DateTimeProperty(auto_now_add=True)
+   deputado_estadual = db.IntegerProperty()
+   deputado_federal = db.IntegerProperty()
+   senador_primeiro = db.IntegerProperty()
+   senador_segundo = db.IntegerProperty()
+   governador = db.IntegerProperty()
+   presidente = db.IntegerProperty(choices=[13,27,21,45,28,50,29,43,16])
+   date = db.DateTimeProperty(auto_now_add=True)
+
+
+class MeusCandidatosForm(djangoforms.ModelForm):
+   class Meta:
+      model = MeusCandidatos
 
 
 class MainPage(webapp.RequestHandler):
    def get(self, id=None):
-     if id:
-       meuscandidatos = db.GqlQuery(LOOKUP_BY_KEY, int(id))
-       template_values = { "meuscandidatos": meuscandidatos }
-       path = os.path.join(os.path.dirname(__file__), "meuscandidatos.html")
-       self.response.out.write(template.render(path, template_values))
-     else:
-       path = os.path.join(os.path.dirname(__file__), "index.html")
-       self.response.out.write(template.render(path, None))
+      if id:
+         meuscandidatos = db.GqlQuery(LOOKUP_BY_KEY, int(id))
+         template_values = { "meuscandidatos": meuscandidatos }
+         path = os.path.join(os.path.dirname(__file__), "meuscandidatos.html")
+         self.response.out.write(template.render(path, template_values))
+      else:
+         meuscandidatosform = MeusCandidatosForm()
+         template_values = { "meuscandidatosform": meuscandidatosform }
+         path = os.path.join(os.path.dirname(__file__), "index.html")
+         self.response.out.write(template.render(path, template_values))
        
    def post(self, unused_id):
-     meuscandidatos = MeusCandidatos()
-     meuscandidatos.deputado_estadual = int(self.request.get("deputado_estadual"))
-     meuscandidatos.deputado_federal = int(self.request.get("deputado_federal"))
-     meuscandidatos.senador_primeiro = int(self.request.get("senador_primeiro"))
-     meuscandidatos.senador_segundo = int(self.request.get("senador_segundo"))
-     meuscandidatos.governador = int(self.request.get("governador"))
-     meuscandidatos.presidente = int(self.request.get("presidente"))
-     key = meuscandidatos.put()
-     self.redirect('/' + str(key.id()))
+      meuscandidatos = MeusCandidatos()
+      try:
+         meuscandidatos.deputado_estadual = int(self.request.get("deputado_estadual"))
+         meuscandidatos.deputado_federal = int(self.request.get("deputado_federal"))
+         meuscandidatos.senador_primeiro = int(self.request.get("senador_primeiro"))
+         meuscandidatos.senador_segundo = int(self.request.get("senador_segundo"))
+         meuscandidatos.governador = int(self.request.get("governador"))
+         meuscandidatos.presidente = int(self.request.get("presidente"))
+      except:
+         template_values = { "intexception": 1 }
+         path = os.path.join(os.path.dirname(__file__), "index.html")
+         self.response.out.write(template.render(path, template_values))
+
+      try:
+         key = meuscandidatos.put()
+         self.redirect('/' + str(key.id()))
+      except:
+         template_values = { "putexception": 1 }
+         path = os.path.join(os.path.dirname(__file__), "index.html")
+         self.response.out.write(template.render(path, template_values))
 
 
 application = webapp.WSGIApplication([(r"/(.*)", MainPage)],

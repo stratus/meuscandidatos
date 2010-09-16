@@ -1,0 +1,15 @@
+<html>
+  <body>
+    {% for candidato in meuscandidatos %}
+    <b>{{candidato.deputado_estadual}}</b> para deputado estadual.<br/>
+    <b>{{candidato.deputado_federal}}</b> para deputado federal.<br/>
+    <b>{{candidato.senador_primeiro}}</b> para senador.<br/>
+    <b>{{candidato.senador_segundo}}</b> para senador.<br/>
+    <b>{{candidato.governador}}</b> para governador.<br/>
+    <b>{{candidato.presidente}}</b> para presidente.<br/>
+    {% endfor %}
+    <br/>
+    Compartilhe no twitter!
+  </body>
+</html>
+

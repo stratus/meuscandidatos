@@ -12,20 +12,11 @@
       	       document.getElementById("tbox").setAttribute("style", "display: none;");
     	    }
          });
-      });
-      function togglePrintPreview() {
-         var currCSS = document.getElementById('printCSS');
-         if (currCSS.media == 'all') {
-            currCSS.media = 'print';
-         }
-	 else {
-            currCSS.media = 'all';
-	 }
+       });
     </script>
   </head>
   <body>
     <h1>Meus Candidatos</h1>
-    <a href="javascript:togglePrintPreview()">Ligar/Desligar modo impressão</a> | 
     <a href="javascript:window.print()">Imprimir</a>
     <br/><br/>
     {% for candidato in meuscandidatos %}

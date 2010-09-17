@@ -1,42 +1,114 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>Meus Candidatos! - http://meuscandidatos.appspot.com/</title>
+    <title>
+      Meus Candidatos - http://meuscandidatos.appspot.com/
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/structure.css" type="text/css" />
+    <link rel="stylesheet" href="css/form.css" type="text/css" />
     <script src="http://platform.twitter.com/anywhere.js?id=fFi7gzg4pVApbpBBmuuVw&v=1" type="text/javascript"></script>
     <script type="text/javascript">
       twttr.anywhere(function (T) {
         T.hovercards();
       });
     </script>
+    <script type="text/javascript" src="scripts/wufoo.js"></script>
   </head>
-  <body>
-    <h1>Meus Candidatos</h1>
-    <span class="features">Divulgue em quem vai votar no twitter!</span><br/>
-    <span class="features">Em breve mais funcionalidades. :)</span><br/>
-    <br/>
-    {% if intexception %}
-    <b>Favor verifique a sua cédula abaixo. Ela contém caracteres inválidos.</b>
-    <br/>
-    {% endif %}
-    {% if putexception %}
-    <b>Houve um problema ao salvar sua cédula. Por favor tente mais tarde. </b>
-    <br/>
-    {% endif %}
-    <form action="/" method="post">
-    <table>
-    {{ meuscandidatosform.as_table }}
-      <tr>
-        <td>
-          <input type="submit" name="submit" value="Enviar">
-        </td>
-      </tr>
-    </table>
-    </form>
-    <br/>
-    Siga o seu candidato a presidência no twitter:<br/>
-    @dilmabr @eymael @ivanpinheiropcb @joseserra_ @levyfidelix @pliniodearruda @ruicpimenta29 @silva_marina @zemaria_pstu
-    <br/>
-    <hr>
-    Autor: @grfranco
+  <body id="public">
+    <div id="container">
+      <form id="form68" name="form68" class="wufoo topLabel page" autocomplete="off" enctype="multipart/form-data" method="post" action="/">
+      <div class="info">
+      <img src="images/urna.jpg">
+	  <h2>
+	    <a href="http://meuscandidatos.appspot.com">Meus Candidatos</a>
+	  </h2>
+	  <div>Imprima sua cola para votar!</div>
+	  <div>Divulgue quem são seus candidatos no twitter (opcional).</div>
+	</div>
+	<ul>
+	  <li id="foli1" class="">
+	  <label class="desc" id="title1" for="Field1">
+	    Deputado Estadual
+	  </label>
+	  <div>
+	    <input id="Field1" name="deputado_estadual" type="text" class="field text small" value="" maxlength="255" tabindex="3" onkeyup="" />
+	  </div>
+	  </li>
+
+	  <li id="foli2" class="">
+	  <label class="desc" id="title2" for="Field2">
+	    Deputado Federal
+	  </label>
+	  <div>
+	    <input id="Field2" name="deputado_federal" type="text" class="field text small" value="" maxlength="255" tabindex="3" onkeyup="" />
+	  </div>
+	  </li>
+
+	  <li id="foli3" class="">
+	  <label class="desc" id="title3" for="Field3">
+	    Primeiro Senador
+	  </label>
+	  <div>
+	    <input id="Field3" name="senador_primeiro" type="text" class="field text small" value="" maxlength="255" tabindex="3" onkeyup="" />
+	  </div>
+	  </li>
+
+	  <li id="foli4" class="">
+	  <label class="desc" id="title4" for="Field4">
+	    Segundo Senador
+	  </label>
+	  <div>
+	    <input id="Field4" name="senador_segundo" type="text" class="field text small" value="" maxlength="255" tabindex="3" onkeyup="" />
+	  </div>
+	  </li>
+
+	  <li id="foli5" class="">
+	  <label class="desc" id="title5" for="Field5">
+	    Governador
+	  </label>
+	  <div>
+	    <input id="Field5" name="governador" type="text" class="field text small" value="" maxlength="255" tabindex="3" onkeyup="" />
+	  </div>
+	  </li>
+
+	  <li id="foli6" class="">
+	  <label class="desc" id="title6" for="Field6">
+	    Presidente
+	  </label>
+	  <div>
+	    <input id="Field6" name="presidente" type="text" class="field text small" value="" maxlength="255" tabindex="3" onkeyup="" />
+	  </div>
+	  </li>
+
+	  <li class="buttons ">
+	  <div>
+	    <input type="hidden" name="currentPage" id="currentPage" value="dB5YAYUJLThQ1vViLqkRtO8PC6nWmLuPsz2BRQNT4gw=" />
+	    <input id="saveForm" name="saveForm" class="btTxt submit" type="submit" value="Enviar" onmousedown="doSubmitEvents();" />
+	  </div>
+	  </li>
+	  <br/>
+	  Siga o seu candidato a presidência no twitter:<br/>
+	  @dilmabr @eymael @ivanpinheiropcb @joseserra_ @levyfidelix @pliniodearruda @ruicpimenta29 @silva_marina @zemaria_pstu
+	  <br/>
+	  <li style="display:none">
+	  <label for="comment">Do Not Fill This Out</label>
+	  <textarea name="comment" id="comment" rows="1" cols="1"></textarea>
+	  <input type="hidden" id="idstamp" name="idstamp" value="" />
+	  <input type="hidden" id="stats" name="stats" value="" />
+	  <input type="hidden" id="clickOrEnter" name="clickOrEnter" value="" />
+	  </li>
+	</ul>
+      </form>
+
+    </div>
+    <img id="bottom" src="images/bottom.png" alt="" />
+    <a class="powertiny" href="http://wufoo.com" title="Powered by Wufoo"
+      style="display:block !important;visibility:visible !important;text-indent:0 !important;position:relative !important;height:auto !important;width:95px !important;overflow:visible !important;text-decoration:none;cursor:pointer !important;margin:0 auto !important">
+      <span style="background:url(./images/powerlogo.png) no-repeat center 7px; margin:0 auto;display:inline-block !important;visibility:visible !important;text-indent:-9000px !important;position:static !important;overflow: auto !important;width:62px !important;height:30px !important">Wufoo</span>
+      <b style="display:block !important;visibility:visible !important;text-indent:0 !important;position:static !important;height:auto !important;width:auto !important;overflow: auto !important;font-weight:normal;font-size:9px;color:#777;padding:0 0 0 3px;">Designed</b>
+    </a><br/>O Meus Candidatos foi feito por @grfranco
   </body>
 </html>
-

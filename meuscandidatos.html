@@ -1,61 +1,94 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>Meus Candidatos! - http://meuscandidatos.appspot.com/</title>
+    <title>
+      Meus Candidatos - http://meuscandidatos.appspot.com/
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/structure.css" type="text/css" />
+    <link rel="stylesheet" href="css/form.css" type="text/css" />
     <script src="http://platform.twitter.com/anywhere.js?id=fFi7gzg4pVApbpBBmuuVw&v=1" type="text/javascript"></script>
     <script type="text/javascript">
       twttr.anywhere.config({ callbackURL: location.href });
       twttr.anywhere(function (T) {
-         T ("#tbox").tweetBox({
-            label: "Meus Candidatos no Twitter:",
-	    defaultContent: "Eu voto e esses são os meus candidatos! - " + location.href + " #eleicoes2010",
-            onTweet: function (tweet, htmlTweet) {
-      	       document.getElementById("tbox").setAttribute("style", "display: none;");
-    	    }
-         });
-       });
-    </script>
+        T.hovercards();
+      });
+      twttr.anywhere(function (T) {
+	  T ("#tbox").tweetBox({
+label: "Meus Candidatos no Twitter:",
+defaultContent: "Eu voto e esses são os meus candidatos! - " + location.href + " #eleicoes2010",
+onTweet: function (tweet, htmlTweet) {
+document.getElementById("tbox").setAttribute("style", "display: none;");
+}
+});
+	  });
+</script>
+<script type="text/javascript" src="scripts/wufoo.js"></script>
   </head>
-  <body>
-    <h1>Meus Candidatos</h1>
-    <a href="javascript:window.print()">Imprimir</a>
-    <br/><br/>
-    {% for candidato in meuscandidatos %}
-      {% if candidato.deputado_estadual %}
-        <b>{{candidato.deputado_estadual}}</b> para deputado estadual.<br/>
-      {% else %}
-        <b>Branco/Nulo</b> para deputado estadual.<br/>
-      {% endif %}
-      {% if candidato.deputado_federal %}
-        <b>{{candidato.deputado_federal}}</b> para deputado federal.<br/>
-      {% else %}
-        <b>Branco/Nulo</b> para deputado federal.<br/>
-      {% endif %}
-      {% if candidato.senador_primeiro %}
-        <b>{{candidato.senador_primeiro}}</b> para senador.<br/>
-      {% else %}
-        <b>Branco/Nulo</b> para senador.<br/>
-      {% endif %}
-      {% if candidato.senador_segundo %}
-        <b>{{candidato.senador_segundo}}</b> para senador.<br/>
-      {% else %}
-        <b>Branco/Nulo</b> para senador.<br/>
-      {% endif %}
-      {% if candidato.governador %}
-        <b>{{candidato.governador}}</b> para governador.<br/>
-      {% else %}
-        <b>Branco/Nulo</b> para governador.<br/>
-      {% endif %}
-      {% if candidato.presidente %}
-        <b>{{candidato.presidente}}</b> para presidente.<br/>
-      {% else %}
-        <b>Branco/Nulo</b> para presidente.<br/>
-      {% endif %}
-    {% endfor %}
-    <br/>
-    Recebeu esse link e quer participar também? <a href="http://meuscandidatos.appspot.com">Clique aqui</a>.<br/>
-    Errou algo e quer preencher novamente? <a href="http://meuscandidatos.appspot.com">Clique aqui.</a>
-    <br/><br/>
-    <div id="tbox"></div>
-  </body>
-</html>
+  <body id="public">
+    <div id="container">
+      <form id="form68" name="form68" class="wufoo topLabel page" autocomplete="off" enctype="multipart/form-data" method="post" action="/">
+	<div class="info">
+        <img src="images/urna.jpg">
+	  <h2>
+	    <a href="http://meuscandidatos.appspot.com">Meus Candidatos</a>
+	  </h2>
+	  <div>Imprima sua cola para votar!</div>
+	  <div>Divulgue quem são seus candidatos no twitter (opcional).</div>
+	</div>
+	<div style="text-align:right">
+	  <a href="javascript:window.print()">Imprimir</a>
+	</div>
+	<br/>
+	{% for candidato in meuscandidatos %}
+	{% if candidato.deputado_estadual %}
+	<b>{{candidato.deputado_estadual}}</b> para deputado estadual.<br/>
+	{% else %}
+	<b>Branco/Nulo</b> para deputado estadual.<br/>
+	{% endif %}
+	{% if candidato.deputado_federal %}
+	<b>{{candidato.deputado_federal}}</b> para deputado federal.<br/>
+	{% else %}
+	<b>Branco/Nulo</b> para deputado federal.<br/>
+	{% endif %}
+	{% if candidato.senador_primeiro %}
+	<b>{{candidato.senador_primeiro}}</b> para senador.<br/>
+	{% else %}
+	<b>Branco/Nulo</b> para senador.<br/>
+	{% endif %}
+	{% if candidato.senador_segundo %}
+	<b>{{candidato.senador_segundo}}</b> para senador.<br/>
+	{% else %}
+	<b>Branco/Nulo</b> para senador.<br/>
+	{% endif %}
+	{% if candidato.governador %}
+	<b>{{candidato.governador}}</b> para governador.<br/>
+	{% else %}
+	<b>Branco/Nulo</b> para governador.<br/>
+	{% endif %}
+	{% if candidato.presidente %}
+	<b>{{candidato.presidente}}</b> para presidente.<br/>
+	{% else %}
+	<b>Branco/Nulo</b> para presidente.<br/>
+	{% endif %}
+	{% endfor %}
+	<br/>
+	Leve seu <b>título de eleitor</b> e um <b>documento de identidade com foto</b>.<br/><br/>
+	Recebeu esse link e quer participar também? <a href="http://meuscandidatos.appspot.com">Clique aqui</a>.<br/>
+	Errou algo e quer preencher novamente? <a href="http://meuscandidatos.appspot.com">Clique aqui.</a>
+	<br/><br/>
+	<div id="tbox"></div>
 
+      </form>
+    </div>
+    <img id="bottom" src="images/bottom.png" alt="" />
+ 
+      <a class="powertiny" href="http://wufoo.com" title="Powered by Wufoo"
+	style="display:block !important;visibility:visible !important;text-indent:0 !important;position:relative !important;height:auto !important;width:95px !important;overflow:visible !important;text-decoration:none;cursor:pointer !important;margin:0 auto !important">
+	<span style="background:url(./images/powerlogo.png) no-repeat center 7px; margin:0 auto;display:inline-block !important;visibility:visible !important;text-indent:-9000px !important;position:static !important;overflow: auto !important;width:62px !important;height:30px !important">Wufoo</span>
+	<b style="display:block !important;visibility:visible !important;text-indent:0 !important;position:static !important;height:auto !important;width:auto !important;overflow: auto !important;font-weight:normal;font-size:9px;color:#777;padding:0 0 0 3px;">Designed</b>
+      </a><br/>O Meus Candidatos foi feito por @grfranco
+    </body>
+  </html>
